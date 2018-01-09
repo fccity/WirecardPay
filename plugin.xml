@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova.plugin.wirecard" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>WirecardPay</name>
+    <js-module name="WirecardPay" src="www/WirecardPay.js">
+        <clobbers target="cordova.plugins.WirecardPay" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="WirecardPay">
+                <param name="android-package" value="cordova.plugin.wirecard.WirecardPay" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+				<framework src="src/android/WirecardPay.gradle" custom="true" type="gradleReference" />
+        <!--<resource-file src="aar/accept-sdk-android-acceptsdksource-release.aar" target="aar/accept-sdk-android-acceptsdksource-release.aar" />
+        <resource-file src="aar/accept-sdk-android-extension-spire-release.aar" target="aar/accept-sdk-android-extension-spire-release.aar" />-->
+        <source-file src="src/android/WirecardPay.java" target-dir="src/cordova/plugin/wirecard/WirecardPay" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="WirecardPay">
+                <param name="ios-package" value="WirecardPay" />
+            </feature>
+        </config-file>
+        <framework src="acceptSDK" type="podspec" spec="~> 1.6" />
+        <framework src="acceptSDK" type="podspec" spec="~> 1.6" />
+        <!--<framework src="acceptSDK/Spire" type="podspec" spec="~> 1.6.209" />-->
+        <header-file src="src/ios/libs/include/Accept.h" />
+        <header-file src="src/ios/libs/include/AcceptBasket.h" />
+        <header-file src="src/ios/libs/include/AcceptBasketItem.h" />
+        <header-file src="src/ios/libs/include/AcceptCustomDataResponse.h" />
+        <header-file src="src/ios/libs/include/AcceptDataService.h" />
+        <header-file src="src/ios/libs/include/AcceptDataServiceConfig.h" />
+        <header-file src="src/ios/libs/include/AcceptExtensionPrinterInfo.h" />
+        <header-file src="src/ios/libs/include/AcceptExtensionTerminalInfo.h" />
+        <header-file src="src/ios/libs/include/AcceptPaymentParameters.h" />
+        <header-file src="src/ios/libs/include/AcceptPrinterExtension.h" />
+        <header-file src="src/ios/libs/include/AcceptReceipt.h" />
+        <header-file src="src/ios/libs/include/AcceptStatistics.h" />
+        <header-file src="src/ios/libs/include/AcceptTerminalConfig.h" />
+        <header-file src="src/ios/libs/include/AcceptTransaction.h" />
+        <header-file src="src/ios/libs/include/AcceptTransactionsQuery.h" />
+        <header-file src="src/ios/libs/include/AcceptUserResponse.h" />
+        <header-file src="src/ios/libs/include/AcceptUtils.h" />
+        <header-file src="src/ios/libs/include/AcceptV3DataTypes.h" />
+        <header-file src="src/ios/libs/include/DatecsAcceptExtension.h" />
+        <header-file src="src/ios/libs/include/DatecsAcceptPrinterExtension.h" />
+        <header-file src="src/ios/libs/include/EmvSwipeAcceptExtension.h" />
+        <header-file src="src/ios/libs/include/MPOPAcceptExtension.h" />
+        <header-file src="src/ios/libs/include/mPOPCommunication.h" />
+        <header-file src="src/ios/libs/include/mPOPPrinterFunctions.h" />
+        <header-file src="src/ios/libs/include/PosMateExtension.h" />
+        <header-file src="src/ios/libs/include/UnimagAcceptExtension.h" />        
+        <source-file src="src/ios/WirecardPay.m" />
+    </platform>
+</plugin>
